@@ -1,6 +1,8 @@
 learn_UW <- function(R, Y, d, lambda, mu, rho, iter) {
   # Solves for U, W in the objective function from Wong et. al. (2014)
   # Code originally from Wong et. al. (2014) adapted for R
+  # Warning: Code takes about 90 seconds to learn U, W. Consider running in parallel
+  # for large backtests
   # 
   #
   #   R: matrix of returns
