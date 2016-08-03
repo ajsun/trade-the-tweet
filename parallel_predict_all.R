@@ -42,7 +42,7 @@ mu = 1-a
 rho = 10
 price.pred <- foreach(i=(start.T:end.T), .combine = 'cbind') %dopar% {
   range <- (i-n):(i-1)
-  trainY <- weight(Y[,range-1, drop=FALSE])
+  trainY <- weight(Y[,range-1, drop=FALSE], standard = FALSE)
   trainR <- returns[,range, drop=FALSE]
   model.out <- learn_UW(trainR,trainY,d, lambda, mu, rho)
   y.pred <- Y[,i-1,drop=FALSE]

@@ -7,20 +7,22 @@ weight <- function(Y, standard = TRUE) {
   #   
   # Returns:
   #   Y
+
   for (i in 1:ncol(Y)) {
     Y[,i] = Y[,i]/ sqrt(sum(Y[,i]^2))
   }
-  
+
   if (standard == TRUE) {
     for (i in 1:nrow(Y)) {
         Y[i,] = (Y[i,] - mean(Y[i,]))/sd(Y[i,])
       
     }
+    Y[Y > 3] = 3
+    Y[Y < 0] = 0
+    Y[is.nan(Y)] = 0
   }
   
-  Y[Y > 3] = 3
-  Y[Y < 0] = 0
-  Y[is.nan(Y)] = 0
+
   
   return(Y)
 }
